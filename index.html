@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Geonames Project</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="author" content="Paulius Petrikas" />
+  <meta name="description" content="Geonames project" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="favicon.ico" rel="icon" />
+  <link href="libs/css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+
+  <h1>Enter coordinates and get information</h1>
+  <div id="form">
+    <form id="coordinates">
+      <label for="latitude">Enter latitude:</label><br />
+      <input type="number" id="latitude" name="latitude" value="" step=".000001" min="-90" max="90" maxlength="10"
+        required /><br />
+      <label for="longitude">Enter longitude:</label><br />
+      <input type="number" id="longitude" name="longitude" value="" step=".000001" min="-180" max="180" maxlength="10"
+        required /><br /><br />
+    </form>
+  </div>
+
+  <table id="infoTable">
+    <tr>
+      <th>API name</th>
+      <th>API description</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>
+        <ol type="1">
+          <li>Find nearby populated place / reverse geocoding</li>
+        </ol>
+      </td>
+      <td>
+        returns the closest populated place (feature class=P) for the lat/lng
+        query as xml document. The unit of the distance element is 'km'. This
+        service is also available in JSON format.
+      </td>
+      <td><button class="button" id="btnRun1">Submit</button></td>
+
+    </tr>
+    <tr>
+      <td>
+        <ol type="1">
+          <li value="2">CountryCode / reverse geocoding</li>
+        </ol>
+      </td>
+      <td>returns the iso country code for the given latitude/longitude</td>
+      <td><button class="button" id="btnRun2">Submit</button></td>
+    </tr>
+    <tr>
+      <td>
+        <ol type="1">
+          <li value="3">Elevation - GTOPO30</li>
+        </ol>
+      </td>
+      <td>
+        a single number giving the elevation in meters according to gtopo30,
+        ocean areas have been masked as "no data" and have been assigned a
+        value of -9999
+      </td>
+      <td><button class="button" id="btnRun3">Submit</button></td>
+    </tr>
+    <tr>
+      <td id="resultsArea" colspan="3">
+        <table id="resultsTable">
+          <caption>Results about coordinates</caption>
+          <tr>
+            <td align="right">Country Name:</td>
+            <td id="txtCountryName"></td>
+          </tr>
+
+          <tr>
+            <td align="right">Closest populated place:</td>
+            <td id="txtName"></td>
+          </tr>
+
+          <tr>
+            <td align="right">Distance to place(km):</td>
+            <td id="txtDistance"></td>
+          </tr>
+
+          <tr>
+            <td align="right">Place population:</td>
+            <td id="txtPopulation"></td>
+          </tr>
+
+          <tr>
+            <td align="right">ISO country code:</td>
+            <td id="txtIsoCode"></td>
+          </tr>
+
+          <tr>
+            <td align="right">Elevation(meters):</td>
+            <td id="txtElevation"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <div id="preloader"></div>
+
+  <script src="libs/js/jquery-2.2.3.min.js"></script>
+  <script src="libs/js/script.js"></script>
+
+</body>
+
+</html>
